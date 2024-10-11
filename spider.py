@@ -26,7 +26,6 @@ def map_value(value, from_min, from_max, to_min, to_max):
     mapped_value = to_min + (ratio * (to_max - to_min))
     return mapped_value
 
-
 def get_distance():
     distance = ping()
     return distance
