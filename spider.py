@@ -1,6 +1,6 @@
 # Spider Animatronic
 from time import sleep
-from rangefinder import ping
+from rangefinder import Range_Finder
 import Servo # Need to use the Pimoroni MicroPython firmware to get this library
 
 # Set the pins used
@@ -15,6 +15,7 @@ MIN_DISTANCE = 0     # minimum distance to react from
 MAX_DISTANCE = 30    # maximum distance to react from
 
 servo = Servo()
+range_finder = Range_Finder(echo_pin = ECHO_PIN, trigger_pin = TRIGGER_PIN)
 
 def map_value(value, from_min, from_max, to_min, to_max):
     """ Map values from one range to another """
@@ -27,7 +28,7 @@ def map_value(value, from_min, from_max, to_min, to_max):
     return mapped_value
 
 def get_distance():
-    distance = ping()
+    distance = range_finder.ping()
     return distance
 
 def move_to_default_position():
